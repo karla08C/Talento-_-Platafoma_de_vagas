@@ -1,10 +1,10 @@
-# 💼 Talento Conecta — Plataforma de Recrutamento e Seleção
+# Talento Conecta — Plataforma de Recrutamento e Seleção
 
 O **Talento Conecta** é uma plataforma moderna e completa voltada para processos de Recrutamento & Seleção (R&S). Desenvolvida para aproximar empresas e profissionais, ela permite que o time de RH publique vagas abertas e gerencie candidaturas, enquanto os profissionais encontram oportunidades, se cadastram e enviam seus currículos online de forma rápida e segura.
 
 ---
 
-## 📌 Sumário
+##  Sumário
 
 - [Visão Geral](#-visão-geral)
 - [O que a plataforma faz hoje](#-o-que-a-plataforma-faz-hoje)
@@ -17,13 +17,13 @@ O **Talento Conecta** é uma plataforma moderna e completa voltada para processo
 
 ---
 
-## 🎯 Visão Geral
+##  Visão Geral
 
 A plataforma foi arquitetada como uma Single Page Application (SPA) com Server-Side Rendering (SSR) híbrido utilizando **TanStack Start**, **React 19** e **Supabase**. O objetivo central é fornecer uma experiência fluida para os candidatos e uma estrutura robusta e segura para os recrutadores.
 
 ---
 
-## ✅ O Que a Plataforma Faz Hoje
+##  O Que a Plataforma Faz Hoje:
 
 Atualmente, o fluxo principal de atração e candidatura está **100% funcional**:
 
@@ -60,7 +60,7 @@ Atualmente, o fluxo principal de atração e candidatura está **100% funcional*
 
 ---
 
-## 🚧 O Que Ainda Está em Construção (Roadmap)
+## O Que Ainda Está em Construção (Roadmap)
 
 Os seguintes módulos e funcionalidades estão planejados ou em desenvolvimento:
 
@@ -99,7 +99,7 @@ Os seguintes módulos e funcionalidades estão planejados ou em desenvolvimento:
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+##  Tecnologias Utilizadas
 
 O projeto utiliza um ecossistema moderno, rápido e com tipagem estática ponta a ponta:
 
@@ -130,7 +130,7 @@ O banco de dados PostgreSQL no Supabase conta com **Row Level Security (RLS)** a
 
 ---
 
-## 🚀 Como Rodar o Projeto Localmente
+## Como Rodar o Projeto Localmente
 
 ### Pré-requisitos
 
@@ -185,7 +185,7 @@ O banco de dados PostgreSQL no Supabase conta com **Row Level Security (RLS)** a
 
 ---
 
-## 📜 Scripts Disponíveis
+##  Scripts Disponíveis
 
 | Comando                           | Descrição                                                     |
 | --------------------------------- | ------------------------------------------------------------- |
