@@ -11,6 +11,8 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as MinhasCandidaturasRouteImport } from './routes/minhas-candidaturas'
+import { Route as RhRouteImport } from './routes/rh'
 import { Route as VagasJobIdRouteImport } from './routes/vagas.$jobId'
 
 const IndexRoute = IndexRouteImport.update({
@@ -23,6 +25,16 @@ const AuthRoute = AuthRouteImport.update({
   path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MinhasCandidaturasRoute = MinhasCandidaturasRouteImport.update({
+  id: '/minhas-candidaturas',
+  path: '/minhas-candidaturas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RhRoute = RhRouteImport.update({
+  id: '/rh',
+  path: '/rh',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const VagasJobIdRoute = VagasJobIdRouteImport.update({
   id: '/vagas/$jobId',
   path: '/vagas/$jobId',
@@ -32,30 +44,44 @@ const VagasJobIdRoute = VagasJobIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/minhas-candidaturas': typeof MinhasCandidaturasRoute
+  '/rh': typeof RhRoute
   '/vagas/$jobId': typeof VagasJobIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/minhas-candidaturas': typeof MinhasCandidaturasRoute
+  '/rh': typeof RhRoute
   '/vagas/$jobId': typeof VagasJobIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/minhas-candidaturas': typeof MinhasCandidaturasRoute
+  '/rh': typeof RhRoute
   '/vagas/$jobId': typeof VagasJobIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/vagas/$jobId'
+  fullPaths: '/' | '/auth' | '/minhas-candidaturas' | '/rh' | '/vagas/$jobId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/vagas/$jobId'
-  id: '__root__' | '/' | '/auth' | '/vagas/$jobId'
+  to: '/' | '/auth' | '/minhas-candidaturas' | '/rh' | '/vagas/$jobId'
+  id:
+    | '__root__'
+    | '/'
+    | '/auth'
+    | '/minhas-candidaturas'
+    | '/rh'
+    | '/vagas/$jobId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthRoute: typeof AuthRoute
+  MinhasCandidaturasRoute: typeof MinhasCandidaturasRoute
+  RhRoute: typeof RhRoute
   VagasJobIdRoute: typeof VagasJobIdRoute
 }
 
@@ -75,6 +101,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/minhas-candidaturas': {
+      id: '/minhas-candidaturas'
+      path: '/minhas-candidaturas'
+      fullPath: '/minhas-candidaturas'
+      preLoaderRoute: typeof MinhasCandidaturasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rh': {
+      id: '/rh'
+      path: '/rh'
+      fullPath: '/rh'
+      preLoaderRoute: typeof RhRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/vagas/$jobId': {
       id: '/vagas/$jobId'
       path: '/vagas/$jobId'
@@ -88,6 +128,8 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthRoute: AuthRoute,
+  MinhasCandidaturasRoute: MinhasCandidaturasRoute,
+  RhRoute: RhRoute,
   VagasJobIdRoute: VagasJobIdRoute,
 }
 export const routeTree = rootRouteImport
