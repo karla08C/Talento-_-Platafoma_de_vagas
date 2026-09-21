@@ -122,7 +122,9 @@ function JobDetail() {
       return;
     }
 
-    toast.success("Candidatura enviada!", { description: "Acompanhe o status em Minhas candidaturas." });
+    toast.success("Candidatura enviada!", {
+      description: "Acompanhe o status em Minhas candidaturas.",
+    });
     void queryClient.invalidateQueries({ queryKey: ["application", jobId, user.id] });
     navigate({ to: "/minhas-candidaturas" });
   };
@@ -145,10 +147,29 @@ function JobDetail() {
 
         {job && (
           <>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap items-center gap-2">
+              <span
+                className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold ${
+                  job.location.toLowerCase().includes("remoto")
+                    ? "bg-emerald-50 text-emerald-700 border border-emerald-200 dark:bg-emerald-950/40 dark:text-emerald-300 dark:border-emerald-800"
+                    : job.location.toLowerCase().includes("híbrido") ||
+                        job.location.toLowerCase().includes("hibrido")
+                      ? "bg-amber-50 text-amber-800 border border-amber-200 dark:bg-amber-950/40 dark:text-amber-300 dark:border-amber-800"
+                      : "bg-orange-50 text-orange-800 border border-orange-200 dark:bg-orange-950/40 dark:text-orange-300 dark:border-orange-800"
+                }`}
+              >
+                {job.location.toLowerCase().includes("remoto")
+                  ? "Remoto"
+                  : job.location.toLowerCase().includes("híbrido") ||
+                      job.location.toLowerCase().includes("hibrido")
+                    ? "Híbrido"
+                    : "Presencial"}
+              </span>
+              <Badge variant="outline" className="border-border">
+                {job.employment_type}
+              </Badge>
               <Badge variant="secondary">{job.department}</Badge>
-              <Badge variant="outline">{job.employment_type}</Badge>
-              <Badge variant="outline">{job.seniority}</Badge>
+              {job.seniority && <Badge variant="outline">{job.seniority}</Badge>}
               {job.status === "closed" && <Badge variant="destructive">Encerrada</Badge>}
             </div>
             <h1 className="mt-4 text-3xl font-semibold sm:text-4xl">{job.title}</h1>
@@ -169,7 +190,9 @@ function JobDetail() {
               {job.requirements && (
                 <div>
                   <h2 className="text-xl font-semibold">Requisitos</h2>
-                  <p className="mt-2 whitespace-pre-line text-muted-foreground">{job.requirements}</p>
+                  <p className="mt-2 whitespace-pre-line text-muted-foreground">
+                    {job.requirements}
+                  </p>
                 </div>
               )}
             </section>

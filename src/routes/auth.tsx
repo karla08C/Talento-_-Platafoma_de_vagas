@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { z } from "zod";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
-import { lovable } from "@/integrations/lovable/index";
 import { safeRedirect } from "@/lib/auth";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -20,7 +19,8 @@ export const Route = createFileRoute("/auth")({
       { title: "Entrar ou criar conta | Talentos" },
       {
         name: "description",
-        content: "Acesse sua conta para se candidatar às vagas abertas e acompanhar seu processo seletivo.",
+        content:
+          "Acesse sua conta para se candidatar às vagas abertas e acompanhar seu processo seletivo.",
       },
       { property: "og:title", content: "Entrar ou criar conta | Talentos" },
       { property: "og:description", content: "Acesse o portal de vagas da empresa." },
@@ -100,17 +100,6 @@ function AuthPage() {
     navigate({ to: target, replace: true });
   };
 
-  const handleGoogle = async () => {
-    const result = await lovable.auth.signInWithOAuth("google", {
-      redirect_uri: window.location.origin,
-    });
-    if (result.error) {
-      toast.error("Falha no login com Google");
-      return;
-    }
-    if (result.redirected) return;
-    navigate({ to: target, replace: true });
-  };
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-hero-gradient px-4 py-12">
@@ -160,7 +149,13 @@ function AuthPage() {
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="signup-password">Senha</Label>
-                  <Input id="signup-password" name="password" type="password" required minLength={8} />
+                  <Input
+                    id="signup-password"
+                    name="password"
+                    type="password"
+                    required
+                    minLength={8}
+                  />
                 </div>
                 <Button type="submit" className="w-full" disabled={loading}>
                   Criar conta
@@ -169,13 +164,6 @@ function AuthPage() {
             </TabsContent>
           </Tabs>
 
-          <div className="my-6 flex items-center gap-3 text-xs uppercase tracking-widest text-muted-foreground">
-            <span className="h-px flex-1 bg-border" /> ou <span className="h-px flex-1 bg-border" />
-          </div>
-
-          <Button variant="outline" className="w-full" onClick={handleGoogle}>
-            Continuar com Google
-          </Button>
 
           <p className="mt-6 text-center text-sm text-muted-foreground">
             <Link to="/" className="underline underline-offset-4">
